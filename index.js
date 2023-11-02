@@ -67,33 +67,6 @@ function addFreelancer () {
 }
 
 
-// // maps through names 
-// // const firstName = document.querySelector("#name");
-//   const object = freeLancers.map((names) => {
-//     console.log("names",names.name)
-//     const element = document.createElement("li");
-//     element.append(names.name);
-//     return element;
-//   });
-//   firstName.replaceChildren(...freeLancers);
 
-// // maps through occupations 
-// // const occupation = document.querySelector("#occupations");
-//   const job = freeLancers.map((occupations) => {
-//     const element = document.createElement("li");
-//     element.append(occupations);
-//     return element;
-//   });
-//   occupation.replaceChildren(...freeLancers);
-
-
-//   // maps through prices 
-// // const money = document.querySelector("#price");
-// const amount = freeLancers.map((prices) => {
-//   const element = document.createElement("li");
-//   element.append(prices);
-//   return element;
-// });
-// money.replaceChildren(...freeLancers);
 
 
