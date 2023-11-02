@@ -22,34 +22,78 @@ let avgPrice = Math.floor(freeLancers.reduce((acc, element) => acc + element.pri
 
 // update average price with new number
  freeLancerPrice.textContent = 'The avg price is ' + avgPrice
+// selectors
+const firstNameSelector = document.querySelector("#name");
+const occupationSelector = document.querySelector("#occupations");
+const priceSelector = document.querySelector("#price");
 
- 
-// maps through names 
-const firstName = document.querySelector("#name");
-  const object = freeLancers.map((names) => {
-    const element = document.createElement("li");
-    element.append(names);
-    return element;
-  });
-  firstName.replaceChildren(...freeLancers);
+const render = () => {
+  const name = freeLancers.map((freelancer) => {
+    const nameListItem = document.createElement("li")
+    nameListItem.textContent = freelancer.name
+    return nameListItem
+  })
+  const occupation = freeLancers.map((freelancer) => {
+    const occupationListItem = document.createElement("li")
+    occupationListItem.textContent = freelancer.occupation
+    return occupationListItem
+  })
+  const price = freeLancers.map((freelancer) => {
+    const priceListItem = document.createElement("li")
+    priceListItem.textContent = freelancer.price
+    return priceListItem
+  })
+  let avgPrice = Math.floor(freeLancers.reduce((acc, element) => acc + element.price, 0) / freeLancers.length);
+  freeLancerPrice.textContent = 'The avg price is ' + avgPrice
+  firstNameSelector.replaceChildren(...name)
+  occupationSelector.replaceChildren(...occupation)
+  priceSelector.replaceChildren(...price)
+}
 
-// maps through occupations 
-const occupation = document.querySelector("#occupations");
-  const job = freeLancers.map((occupations) => {
-    const element = document.createElement("li");
-    element.append(occupations);
-    return element;
-  });
-  occupation.replaceChildren(...freeLancers);
+render()
+
+const addFreelancerId = setInterval(addFreelancer, 1000)
+function addFreelancer () {
+  if (freeLancers.length === maxListing -1)clearInterval(addFreelancerId)
+  const randomName = names[Math.floor(Math.random()* names.length)]
+  const randomOccupation = occupations[Math.floor(Math.random()* occupations.length)]
+  const randomPrice = prices[Math.floor(Math.random()* prices.length)]
+  freeLancers.push({
+    name: randomName,
+    occupation: randomOccupation,
+    price: randomPrice
+  })
+  render()
+}
 
 
-  // maps through occupations 
-const money = document.querySelector("#price");
-const amount = freeLancers.map((prices) => {
-  const element = document.createElement("li");
-  element.append(prices);
-  return element;
-});
-money.replaceChildren(...freeLancers);
+// // maps through names 
+// // const firstName = document.querySelector("#name");
+//   const object = freeLancers.map((names) => {
+//     console.log("names",names.name)
+//     const element = document.createElement("li");
+//     element.append(names.name);
+//     return element;
+//   });
+//   firstName.replaceChildren(...freeLancers);
+
+// // maps through occupations 
+// // const occupation = document.querySelector("#occupations");
+//   const job = freeLancers.map((occupations) => {
+//     const element = document.createElement("li");
+//     element.append(occupations);
+//     return element;
+//   });
+//   occupation.replaceChildren(...freeLancers);
+
+
+//   // maps through prices 
+// // const money = document.querySelector("#price");
+// const amount = freeLancers.map((prices) => {
+//   const element = document.createElement("li");
+//   element.append(prices);
+//   return element;
+// });
+// money.replaceChildren(...freeLancers);
 
 
